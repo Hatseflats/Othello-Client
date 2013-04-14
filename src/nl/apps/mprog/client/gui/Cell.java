@@ -21,14 +21,17 @@ public class Cell {
         switch (s) {
 	        case LIGHT:
 	        	view.setText("L");
+	        	state = State.LIGHT;
 	            break;
 	                
 	        case DARK:
 	        	view.setText("D");
+	        	state = State.DARK;
 	            break;
 	                     
 	        case EMPTY:
 	        	view.setText("E");
+	        	state = State.EMPTY;
 	        	break;
         }
     }

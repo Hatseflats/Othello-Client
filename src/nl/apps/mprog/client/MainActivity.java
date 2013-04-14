@@ -1,6 +1,6 @@
 package nl.apps.mprog.client;
 
-import nl.apps.mprog.client.gui.Table;
+import nl.apps.mprog.client.gui.Grid;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -12,8 +12,8 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		Table table = new Table(this);
-		table.spawn();
+		Grid grid = new Grid(this);
+		grid.spawn();
 		
 		//new NetworkConnection().execute();
 	}
