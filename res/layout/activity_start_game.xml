@@ -1,4 +1,4 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -6,9 +6,10 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".StartGameActivity" >
+    android:background="#dddddd"
+    tools:context=".StartLocalGameActivity" >
     
-    <LinearLayout
+    <LinearLayout android:id="@+id/tablecontainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
@@ -23,6 +24,45 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"></TableLayout>
         
-    </LinearLayout>
-
+        </LinearLayout>
+        
+    <LinearLayout
+        android:id="@+id/scores"
+    	android:layout_below="@+id/tablecontainer"
+    	android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+       	<TextView
+          android:id="@+id/whitepieces"
+          android:layout_height="wrap_content"
+          android:layout_width="wrap_content"
+          android:layout_gravity="left"
+          android:text=""
+          android:textSize="20sp" />
+       	<TextView
+          android:id="@+id/turn"
+          android:layout_height="wrap_content"
+          android:layout_width="wrap_content"
+          android:text="@string/turn_player_white"
+          android:layout_gravity="center"
+          android:textSize="20sp" />        
+        <TextView
+          android:id="@+id/blackpieces"
+          android:layout_height="wrap_content"
+          android:layout_width="wrap_content"
+          android:layout_gravity="right"
+          android:text=""
+          android:textSize="20sp" />
+       </LinearLayout>
+       
+        <Button
+        android:id="@+id/makecomputermove"
+        android:layout_below="@+id/scores"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/mainbuttonborder"
+        android:text="MAKE COMPUTER MOVE"
+        android:onClick="computerMove"
+        android:textColor="#ffffff" />
+    
+       
 </RelativeLayout>

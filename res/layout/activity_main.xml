@@ -48,6 +48,7 @@
             android:layout_marginBottom="35dp"
             android:background="@drawable/mainbuttonborder"
             android:text="START GAME"
+            android:onClick="onStartGameClick"
             android:textColor="#ffffff" />
 
         <Button
@@ -57,6 +58,7 @@
             android:layout_marginBottom="35dp"
             android:background="@drawable/mainbuttonborder"
             android:text="PLAY ONLINE"
+            android:onClick="onPlayOnlineClick"
             android:textColor="#ffffff" />
 
         <Button
@@ -66,6 +68,7 @@
             android:layout_marginBottom="35dp"
             android:background="@drawable/mainbuttonborder"
             android:text="WATCH REPLAY"
+            android:onClick="onReplayClick"
             android:textColor="#ffffff" />
     </LinearLayout>
 

@@ -5,5 +5,14 @@
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_start_game">StartGameActivity</string>
+    <string name="title_activity_replay">ReplayActivity</string>
+    <string name="title_activity_play_online">PlayOnlineActivity</string>
+    <string name="title_activity_start_network_game">StartNetworkGameActivity</string>
+    <string name="title_activity_game_end">GameEndActivity</string>
+    <string name="title_activity_play_replay">PlayReplayActivity</string>
+    
+    <string name="turn_player_white">Current player: white</string>
+    <string name="turn_player_black">Current player: black</string>
+    
 
 </resources>

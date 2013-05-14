@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="11"
+        android:minSdkVersion="8"
         android:targetSdkVersion="17" />
 
     <application
@@ -23,12 +23,52 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="nl.mprog.apps.othello.StartGameActivity"
+            android:name="nl.mprog.apps.othello.StartLocalGameActivity"
             android:label="@string/title_activity_start_game"
             android:parentActivityName="nl.mprog.apps.othello.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="nl.mprog.apps.othello.MainActivity" />
+        </activity>
+        <activity
+            android:name="nl.mprog.apps.othello.ReplayActivity"
+            android:label="@string/title_activity_replay"
+            android:parentActivityName="nl.mprog.apps.othello.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="nl.mprog.apps.othello.MainActivity" />
+        </activity>
+        <activity
+            android:name="nl.mprog.apps.othello.StartNetworkGameActivity"
+            android:label="@string/title_activity_play_online"
+            android:parentActivityName="nl.mprog.apps.othello.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="nl.mprog.apps.othello.MainActivity" />
+        </activity>
+        <activity
+            android:name="nl.mprog.apps.othello.StartNetworkGameActivity"
+            android:label="@string/title_activity_start_network_game"
+            android:parentActivityName="nl.mprog.apps.othello.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="nl.mprog.apps.othello.MainActivity" />
+        </activity>
+        <activity
+            android:name="nl.mprog.apps.othello.GameEndActivity"
+            android:label="@string/title_activity_game_end"
+            android:parentActivityName="nl.mprog.apps.othello.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="nl.mprog.apps.othello.MainActivity" />
+        </activity>
+        <activity
+            android:name="nl.mprog.apps.othello.PlayReplayActivity"
+            android:label="@string/title_activity_play_replay"
+            android:parentActivityName="nl.mprog.apps.othello.ReplayActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="nl.mprog.apps.othello.ReplayActivity" />
         </activity>
     </application>
 
