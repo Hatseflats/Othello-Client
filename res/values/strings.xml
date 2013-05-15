@@ -10,9 +10,8 @@
     <string name="title_activity_start_network_game">StartNetworkGameActivity</string>
     <string name="title_activity_game_end">GameEndActivity</string>
     <string name="title_activity_play_replay">PlayReplayActivity</string>
-    
     <string name="turn_player_white">Current player: white</string>
     <string name="turn_player_black">Current player: black</string>
-    
+    <string name="title_activity_play_network_game">PlayNetworkGame</string>
 
 </resources>

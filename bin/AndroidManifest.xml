@@ -47,14 +47,6 @@
                 android:value="nl.mprog.apps.othello.MainActivity" />
         </activity>
         <activity
-            android:name="nl.mprog.apps.othello.StartNetworkGameActivity"
-            android:label="@string/title_activity_start_network_game"
-            android:parentActivityName="nl.mprog.apps.othello.MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="nl.mprog.apps.othello.MainActivity" />
-        </activity>
-        <activity
             android:name="nl.mprog.apps.othello.GameEndActivity"
             android:label="@string/title_activity_game_end"
             android:parentActivityName="nl.mprog.apps.othello.MainActivity" >
@@ -70,6 +62,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="nl.mprog.apps.othello.ReplayActivity" />
         </activity>
+        <activity
+            android:name="nl.mprog.apps.othello.PlayNetworkGame"
+            android:label="@string/title_activity_play_network_game" >
+        </activity>
     </application>
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

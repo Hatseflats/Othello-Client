@@ -1,13 +1,11 @@
 package nl.mprog.apps.othello.game;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedList;
+import java.util.List;
 
 public class Computer {
 
-	public Game game;
-	public int player;
+	private Game game;
+	private int player;
 
 
 	public Computer(Game game, int player) {
@@ -16,9 +14,9 @@ public class Computer {
 	}
 	
 	public Cell getMove(){
-		Board board = this.game.getBoard();
+		Board board = game.getBoard();
 		
-		LinkedList<Cell> availableMoves = board.getAvailableMoves(player);
+		List<Cell> availableMoves = board.getAvailableMoves(player);
 
 		int highestCount = 0;
 		int highestKey = 0;

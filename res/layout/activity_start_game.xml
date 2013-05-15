@@ -63,6 +63,17 @@
         android:text="MAKE COMPUTER MOVE"
         android:onClick="computerMove"
         android:textColor="#ffffff" />
+       
+        <Button
+        android:id="@+id/showhints"
+        android:layout_below="@+id/makecomputermove"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/mainbuttonborder"
+        android:layout_marginTop="25dp"
+        android:text="SHOW AVAILABLE MOVES"
+        android:onClick="showHints"
+        android:textColor="#ffffff" />
     
        
 </RelativeLayout>

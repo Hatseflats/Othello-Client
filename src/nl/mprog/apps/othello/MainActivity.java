@@ -26,7 +26,7 @@ public class MainActivity extends Activity {
 		startActivity(intent);
 	}
 	
-	public void onlayOnlineClick(View view) {
+	public void onPlayOnlineClick(View view) {
 		Intent intent = new Intent(this, StartNetworkGameActivity.class);
 		startActivity(intent);
 	}

@@ -7,11 +7,11 @@ public enum State {
 	
 	private final int state;
 	
-	State(int state){
+	private State(int state){
 		this.state = state;
 	}
 	
-	public int state(){
+	public int getState(){
 		return state;
 	}
 		

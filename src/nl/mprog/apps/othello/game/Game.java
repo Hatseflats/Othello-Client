@@ -4,7 +4,6 @@ import static nl.mprog.apps.othello.game.State.BLACK;
 import static nl.mprog.apps.othello.game.State.WHITE;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 public class Game {
@@ -25,13 +24,12 @@ public class Game {
 	}
 	
 	public boolean makeMove(int x, int y){
-		
 		if(!board.isValidMove(x, y, currentPlayer)) return false;
 		
 		moves.add(new Move(x, y));
 		State state = State.getEnumByInt(currentPlayer);
 		
-		LinkedList<Cell> piecesToFlip = board.flipEnemyPieces(x, y, currentPlayer);
+		List<Cell> piecesToFlip = board.flipEnemyPieces(x, y, currentPlayer);
 		
 		for (Cell cell : piecesToFlip) {
 			board.setBoardCell(cell.getX(), cell.getY(), state);

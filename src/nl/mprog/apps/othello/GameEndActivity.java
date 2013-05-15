@@ -1,5 +1,9 @@
 package nl.mprog.apps.othello;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import nl.mprog.apps.othello.persistence.ReplaysHandler;
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -29,6 +33,11 @@ public class GameEndActivity extends Activity {
 		} else {
 			textView.setText("Too bad, you lost the game!");
 		}
+		
+		TextView replayName = (TextView) findViewById(R.id.replayname);
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		Date date = new Date();
+		replayName.setText(dateFormat.format(date));
 	}
 
 	/**

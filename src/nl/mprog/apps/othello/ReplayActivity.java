@@ -33,11 +33,6 @@ public class ReplayActivity extends Activity {
 		for (Entry<String, String> entry : handler.getReplays().entrySet()) {
 			addReplay(entry);
 		}
-		
-//		addReplay("MeVsComputer");
-//		addReplay("21-04-2013 12:33:55");
-//		addReplay("22-04-2013 12:20:13");
-//		addReplay("FastWin");
 	}
 
 	/**

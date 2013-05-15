@@ -1,5 +1,7 @@
 package nl.mprog.apps.othello;
 
+import java.util.List;
+
 import nl.mprog.apps.othello.clickhandlers.CellClickHandler;
 import nl.mprog.apps.othello.game.Board;
 import nl.mprog.apps.othello.game.Cell;
@@ -11,7 +13,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -159,6 +160,24 @@ public class StartLocalGameActivity extends Activity {
 				toggleClickable(true);
 			}
 		}
+	}
+	
+	public void showHints(View view) {
+		if (game.getCurrentPlayer() != PLAYER_WHITE) {
+			return;
+		}
+		
+		List<Cell> availableMoves = game.getBoard().getAvailableMoves(game.getCurrentPlayer());
+		for (Cell cell : availableMoves) {
+			showHint(cell.getX(), cell.getY());
+		}
+	}
+	
+	private void showHint(int x, int y) {
+	    TableRow row = (TableRow) grid.getChildAt(y);
+	    ImageView cell = (ImageView) row.getChildAt(x);
+	    
+	    cell.setImageResource(R.drawable.hint_white);
 	}
 		
 	private void changeCellImage(int x, int y, State state){

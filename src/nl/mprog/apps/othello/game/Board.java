@@ -1,8 +1,12 @@
 package nl.mprog.apps.othello.game;
 
-import java.util.Arrays;
+import static nl.mprog.apps.othello.game.State.BLACK;
+import static nl.mprog.apps.othello.game.State.EMPTY;
+import static nl.mprog.apps.othello.game.State.WHITE;
+
+import java.util.ArrayList;
 import java.util.LinkedList;
-import static nl.mprog.apps.othello.game.State.*;
+import java.util.List;
 
 public class Board {
 	
@@ -23,14 +27,13 @@ public class Board {
 		}		
 	}
 	
-	public void setBoardCell(int x, int y, State state){
+	public void setBoardCell(int x, int y, State state) {
 		cells[y][x].setState(state);
 	}
 	
-	public LinkedList<Cell> getAvailableMoves(int player){
-		
-		LinkedList<Cell> availableMoves = new LinkedList<Cell>();
-		LinkedList<Cell> playerCells = getPlayerCells(State.getEnumByInt(player));
+	public List<Cell> getAvailableMoves(int player) {
+		List<Cell> availableMoves = new ArrayList<Cell>();
+		List<Cell> playerCells = getPlayerCells(State.getEnumByInt(player));
 	
 		for (Cell cell : playerCells) {
 			availableMoves.addAll(checkNeighbours(cell.getX(), cell.getY(), player));
@@ -39,9 +42,8 @@ public class Board {
 		return availableMoves;
 	}
 	
-	private LinkedList<Cell> checkNeighbours(int x, int y, int player){
-				
-		LinkedList<Cell> availableMoves = new LinkedList<Cell>();
+	private List<Cell> checkNeighbours(int x, int y, int player){
+		List<Cell> availableMoves = new ArrayList<Cell>();
 		
         for ( int rowMod = -1; rowMod <= 1; rowMod++ ) {
             for ( int colMod = -1; colMod <= 1; colMod++ ) {
@@ -61,35 +63,28 @@ public class Board {
         return availableMoves;
 	}
 	
-	private Cell checkLine(int x, int y, int colMod, int rowMod, int currentPlayer){
-		
-		Cell availableMove = null;
-		
+	private Cell checkLine(int x, int y, int colMod, int rowMod, int currentPlayer) {
 		int currentX = x + colMod;
 		int currentY = y + rowMod;
 		
-		while(0 <= currentY && currentY < GRID_SIZE && 0 <= currentX && currentX < GRID_SIZE){
-			
-			if((currentPlayer == PLAYER_WHITE && cells[currentY][currentX].getState() == WHITE) || (currentPlayer == PLAYER_BLACK && cells[currentY][currentX].getState() == BLACK)){
-				break;
+		while (0 <= currentY && currentY < GRID_SIZE && 0 <= currentX && currentX < GRID_SIZE) {
+			if ((currentPlayer == PLAYER_WHITE && cells[currentY][currentX].getState() == WHITE) || (currentPlayer == PLAYER_BLACK && cells[currentY][currentX].getState() == BLACK)) {
+				return null;
 			}
 			
 			if(cells[currentY][currentX].getState() == EMPTY){
-
-				availableMove = cells[currentY][currentX];
-				break;
+				return cells[currentY][currentX];
 			}
 			
 			currentX += colMod;
 			currentY += rowMod;
 		}
 		
-		return availableMove;
+		return null;
 	}
 	
-	public LinkedList<Cell> flipEnemyPieces(int x, int y, int player){
-		
-		LinkedList<Cell> piecesToFlip = new LinkedList<Cell>();
+	public List<Cell> flipEnemyPieces(int x, int y, int player){
+		List<Cell> piecesToFlip = new ArrayList<Cell>();
 
         for ( int rowMod = -1; rowMod <= 1; rowMod++ ) {
             for ( int colMod = -1; colMod <= 1; colMod++ ) {
@@ -99,7 +94,7 @@ public class Board {
             		int currentX = x + colMod;
             		int currentY = y + rowMod;
             		
-            		LinkedList<Cell> pieces = new LinkedList<Cell>();
+            		List<Cell> pieces = new ArrayList<Cell>();
             		            		
             		while(0 <= currentY && currentY < GRID_SIZE && 0 <= currentX && currentX < GRID_SIZE && cells[currentY][currentX].getState() != EMPTY ){
             			
@@ -137,8 +132,8 @@ public class Board {
 		return false;
 	}
 	
-	public LinkedList<Cell> getPlayerCells(State state){
-		LinkedList<Cell> playerCells = new LinkedList<Cell>();
+	public List<Cell> getPlayerCells(State state){
+		List<Cell> playerCells = new ArrayList<Cell>();
 		
 		for (int j = 0; j < GRID_SIZE; j++) {
 			for (int i = 0; i < GRID_SIZE; i++) {

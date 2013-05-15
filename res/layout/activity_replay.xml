@@ -41,12 +41,21 @@
 	            android:text="WATCH REPLAY" />
         </LinearLayout>
         
-        <LinearLayout 
-            android:id="@+id/replays"
+        <ScrollView 
             android:layout_gravity="center"
             android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        
+	        <LinearLayout 
+	            android:id="@+id/replays"
+	            android:layout_gravity="center"
+	            android:layout_marginTop="10dp"
+	            android:orientation="vertical"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content" />
+        
+        </ScrollView>
         
     </LinearLayout>
 

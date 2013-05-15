@@ -29,9 +29,6 @@ public class PlayReplayActivity extends Activity {
 	
 	private static final int GRID_SIZE = 8;
 	
-	private static final int PLAYER_WHITE = 1;
-	private static final int PLAYER_BLACK = 2;
-	
 	private TableLayout grid;
 	
 	private Game game;
@@ -90,17 +87,16 @@ public class PlayReplayActivity extends Activity {
 	}
 	
 	public void nextMove(View view) {
+		Move move = moves.get(0);
+		moves.remove(0);
+		makeMove(move.getX(), move.getY());
+		((TextView) findViewById(R.id.currentturn)).setText("Last move was: ("+ move.getX() +", "+ move.getY() +")");
+		
 		if (moves.size() == 0) {
-			// game end
 			Toast.makeText(this, "Game has ended!", 5).show();
 			TextView textView = (TextView) findViewById(R.id.nextmove);
 			textView.setText("GAME HAS ENDED!");
 			textView.setEnabled(false);
-		} else {
-			Move move = moves.get(0);
-			moves.remove(0);
-			makeMove(move.getX(), move.getY());
-			((TextView) findViewById(R.id.currentturn)).setText("Last move was: ("+ move.getX() +", "+ move.getY() +")");
 		}
 	}
 
@@ -112,17 +108,12 @@ public class PlayReplayActivity extends Activity {
 				changeCellImage(cell.getX(), cell.getY(), cell.getState());
 			}
 		}
-		
-//		TextView whitePieceCount = (TextView) findViewById(R.id.whitepieces);
-//		TextView blackPieceCount = (TextView) findViewById(R.id.blackpieces);
-//		
-//		whitePieceCount.setText(String.valueOf(game.getPieceCount(PLAYER_WHITE)));
-//		blackPieceCount.setText(String.valueOf(game.getPieceCount(PLAYER_BLACK)));
-
 	}
 	
 	public void makeMove(int x, int y){
-		if(game.makeMove(x, y)) refreshBoard(game.getBoard());
+		if (game.makeMove(x, y)) {
+			refreshBoard(game.getBoard());
+		}
 	}
 	
 	private void changeCellImage(int x, int y, State state){
@@ -162,8 +153,6 @@ public class PlayReplayActivity extends Activity {
 
 				tr.addView(imageView);
 					
-//				imageView.setOnClickListener(new CellClickHandler(this, i, j));
-				
 			}
 			
 			grid.addView(tr, new TableLayout.LayoutParams(LayoutParams.FILL_PARENT,LayoutParams.WRAP_CONTENT));

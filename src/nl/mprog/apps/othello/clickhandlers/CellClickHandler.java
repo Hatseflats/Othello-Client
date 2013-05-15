@@ -1,7 +1,6 @@
 package nl.mprog.apps.othello.clickhandlers;
 
 import nl.mprog.apps.othello.StartLocalGameActivity;
-import nl.mprog.apps.othello.game.Board;
 import android.view.View;
 import android.view.View.OnClickListener;
 
@@ -19,7 +18,7 @@ public class CellClickHandler implements OnClickListener{
 	
 	@Override
 	public void onClick(View arg0) {
-		this.activity.makeMove(x, y);
+		activity.makeMove(x, y);
 	}
 
 }

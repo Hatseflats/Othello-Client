@@ -3,8 +3,9 @@ package nl.mprog.apps.othello.game;
 import static nl.mprog.apps.othello.game.State.*;
 
 public class Cell {
-	public int x, y;
-	public State state;
+	
+	private int x, y;
+	private State state;
 	
 	public Cell(int x, int y) {
 		this.x = x;
