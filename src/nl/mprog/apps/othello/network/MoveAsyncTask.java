@@ -5,7 +5,7 @@ import android.os.AsyncTask;
 
 import com.esotericsoftware.kryonet.Client;
 
-public class MoveAsyncTask extends AsyncTask<Integer, Void, String>  {
+public class MoveAsyncTask extends AsyncTask<Integer, Void, Void>  {
 	
 	private Client client;
 	private String networkgameId;
@@ -16,8 +16,9 @@ public class MoveAsyncTask extends AsyncTask<Integer, Void, String>  {
 		this.networkgameId = networkgameId;
 		this.colorId = colorId;	
 	}
-	
-	protected String doInBackground(Integer... arg0) {
+
+    // send a move to the server
+	protected Void doInBackground(Integer... arg0) {
 		Move move = new Move();
 		move.x = arg0[0];
 		move.y = arg0[1];
@@ -26,11 +27,6 @@ public class MoveAsyncTask extends AsyncTask<Integer, Void, String>  {
 		
 		client.sendTCP(move);
 		
-		return "";
+		return null;
 	}
-	
-	public void onPostExecute(){
-		
-	}
-
 }

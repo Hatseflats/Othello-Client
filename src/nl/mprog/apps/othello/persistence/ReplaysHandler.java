@@ -9,6 +9,13 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+/**
+ * De database handler voor het opslaan en ophalen van replays.
+ * 
+ * @author Marten
+ * @author Sebastiaan
+ *
+ */
 public class ReplaysHandler extends SQLiteOpenHelper {
 	
 	private static final int VERSION = 1;

@@ -12,7 +12,11 @@ public class Computer {
 		this.game = game;
 		this.player = player;
 	}
-	
+
+    /**
+     * Generates a move for the computer by checking which of the available moves will flip most pieces
+     * @return a cell object
+     */
 	public Cell getMove(){
 		Board board = game.getBoard();
 		

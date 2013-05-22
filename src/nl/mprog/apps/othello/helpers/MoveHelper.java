@@ -5,6 +5,13 @@ import java.util.List;
 
 import nl.mprog.apps.othello.game.Move;
 
+/**
+ * Helper voor het converteren van een move array naar string en andersom.
+ * 
+ * @author Marten
+ * @author Sebastiaan
+ *
+ */
 public class MoveHelper {
 	
 	public static String movesToStringFormat(List<Move> moves) {

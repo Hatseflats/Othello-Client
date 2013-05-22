@@ -30,6 +30,12 @@ public class Board {
 	public void setBoardCell(int x, int y, State state) {
 		cells[y][x].setState(state);
 	}
+
+    /**
+     * Gets all available moves for a certain player
+     * @param player the player of which you want the available moves
+     * @return a List object containing cells with all possible moves for a certain player
+     */
 	
 	public List<Cell> getAvailableMoves(int player) {
 		List<Cell> availableMoves = new ArrayList<Cell>();
@@ -41,6 +47,14 @@ public class Board {
 		
 		return availableMoves;
 	}
+
+    /**
+     * Checks the neighbours of a cell, used to determine all possible moves
+     * @param x the x coordinate of the cell
+     * @param y the y coordinate of the cell
+     * @param player the player who owns the cell
+     * @return a list with all moves made available from a certain cell on the board
+     */
 	
 	private List<Cell> checkNeighbours(int x, int y, int player){
 		List<Cell> availableMoves = new ArrayList<Cell>();
@@ -62,7 +76,17 @@ public class Board {
         
         return availableMoves;
 	}
-	
+
+    /**
+     * Checks all cells in a line starting at a certain cell, used to determine all possible moves.
+     * @param x the x coordinate of the cell
+     * @param y the y coordinate of the cell
+     * @param colMod the x axis modifier for the line to check
+     * @param rowMod the y axis modifier for the line to check
+     * @param currentPlayer the player who owns the cell
+     * @return a Null object if no move is found, a cell if a valid move is found
+     */
+
 	private Cell checkLine(int x, int y, int colMod, int rowMod, int currentPlayer) {
 		int currentX = x + colMod;
 		int currentY = y + rowMod;
@@ -82,6 +106,14 @@ public class Board {
 		
 		return null;
 	}
+
+    /**
+     * Returns a list with the pieces a move will flip
+     * @param x the x coordinate of the move
+     * @param y the y coordinate of the move
+     * @param player the player who makes the move
+     * @return a list with all pieces that will change colors
+     */
 	
 	public List<Cell> flipEnemyPieces(int x, int y, int player){
 		List<Cell> piecesToFlip = new ArrayList<Cell>();
@@ -123,7 +155,15 @@ public class Board {
         
         return piecesToFlip;
 	}
-	
+
+    /**
+     * checks if a move is valid
+     * @param x the x coordinate of the move
+     * @param y the y coordinate of the move
+     * @param currentPlayer the player who makes the move
+     * @return the boolean true if the move is valid, false if invalid
+     */
+
 	public boolean isValidMove(int x, int y, int currentPlayer){
 		for (Cell cell : getAvailableMoves(currentPlayer)) {
 			if(cell.getX() == x && cell.getY() == y) return true;
@@ -131,7 +171,13 @@ public class Board {
 		
 		return false;
 	}
-	
+
+    /**
+     * Returns a list containing all cells that are in a certain state
+     * @param state a State object for which to get the cells
+     * @return a list object with all cells that are in a certain state
+     */
+
 	public List<Cell> getPlayerCells(State state){
 		List<Cell> playerCells = new ArrayList<Cell>();
 		

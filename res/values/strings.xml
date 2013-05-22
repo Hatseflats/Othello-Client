@@ -13,5 +13,8 @@
     <string name="turn_player_white">Current player: white</string>
     <string name="turn_player_black">Current player: black</string>
     <string name="title_activity_play_network_game">PlayNetworkGame</string>
+    <string name="game_won">Congratulations, you win!</string>
+    <string name="game_lost">Too bad, you lost!</string>
+    <string name="game_draw">It\'s a draw!</string>
 
 </resources>

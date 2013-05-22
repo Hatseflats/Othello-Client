@@ -6,15 +6,20 @@ import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 
+/**
+ * De clickhandler voor het openen van een replay.
+ * 
+ * @author Marten
+ * @author Sebastiaan
+ *
+ */
 public class OpenReplayClickHandler implements OnClickListener {
 	
 	private final Context context;
-	private final String name;
 	private final String moves;
 	
-	public OpenReplayClickHandler(final Context context, final String name, final String moves) {
+	public OpenReplayClickHandler(final Context context, final String moves) {
 		this.context = context;
-		this.name = name;
 		this.moves = moves;
 	}
 

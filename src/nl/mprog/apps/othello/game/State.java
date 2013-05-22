@@ -14,6 +14,12 @@ public enum State {
 	public int getState(){
 		return state;
 	}
+
+    /**
+     * returns a State object generated from an integer
+     * @param i the int to get a State object for
+     * @return a state object
+     */
 		
 	public static State getEnumByInt(int i){
 		switch(i){
