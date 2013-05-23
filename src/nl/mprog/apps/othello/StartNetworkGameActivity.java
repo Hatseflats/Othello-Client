@@ -1,17 +1,21 @@
 package nl.mprog.apps.othello;
 
+import android.os.Bundle;
+import android.provider.Settings.Secure;
+import android.view.View;
+import android.widget.Button;
+import android.widget.RelativeLayout;
+import android.widget.TableLayout;
+import android.widget.Toast;
+import com.esotericsoftware.kryonet.Client;
+import nl.mprog.apps.othello.game.Board;
+import nl.mprog.apps.othello.game.Cell;
 import nl.mprog.apps.othello.game.Game;
 import nl.mprog.apps.othello.network.ConnectionAsyncTask;
 import nl.mprog.apps.othello.network.DisconnectAsyncTask;
 import nl.mprog.apps.othello.network.MoveAsyncTask;
-import android.os.Bundle;
-import android.provider.Settings.Secure;
-import android.view.View;
-import android.widget.RelativeLayout;
-import android.widget.TableLayout;
-import android.widget.Toast;
 
-import com.esotericsoftware.kryonet.Client;
+import java.util.List;
 
 /**
  * De activity voor het spelen van een network game tegen een andere speler.
@@ -92,16 +96,6 @@ public class StartNetworkGameActivity extends GameActivity {
 		}
 	}
 
-	public void sendMove(int x, int y) {
-
-        if(!game.getBoard().isValidMove(x, y, game.getCurrentPlayer())) return;
-
-		makeMove(x, y);
-        MoveAsyncTask moveTask = new MoveAsyncTask(client, networkgameId, playerColor);
-        moveTask.execute(x, y);
-
-	}
-
     @Override
 	public void makeMove(int x, int y){
 		if (game.makeMove(x, y)) {
@@ -116,6 +110,46 @@ public class StartNetworkGameActivity extends GameActivity {
 			if(game.checkVictoryConditions()){
                 gameEnd();
 			}
+
+            MoveAsyncTask moveTask = new MoveAsyncTask(client, networkgameId, playerColor);
+            moveTask.execute(x, y);
+
+        }
+	}
+	
+    @Override
+	public void showHints(View view) {
+		if (game.getCurrentPlayer() != playerColor) {
+			return;
+		}
+		
+		List<Cell> availableMoves = game.getBoard().getAvailableMoves(game.getCurrentPlayer());
+		for (Cell cell : availableMoves) {
+			showHint(cell.getX(), cell.getY());
 		}
 	}
+
+    @Override
+    protected void refreshBoard(Board board) {
+        Cell[][] cells = board.getCells();
+
+        for (Cell[] row : cells) {
+            for (Cell cell : row) {
+                changeCellImage(cell.getX(), cell.getY(), cell.getState());
+            }
+        }
+
+        Button whitePieceCount = (Button) findViewById(R.id.whitecount);
+        Button blackPieceCount = (Button) findViewById(R.id.blackcount);
+        Button turn = (Button) findViewById(R.id.makecomputermove);
+
+        whitePieceCount.setText(String.valueOf(game.getPieceCount(PLAYER_WHITE)));
+        blackPieceCount.setText(String.valueOf(game.getPieceCount(PLAYER_BLACK)));
+
+        if(game.getCurrentPlayer() == playerColor){
+            turn.setText(R.string.yourmove);
+        } else {
+            turn.setText(R.string.enemymove);
+        }
+    }
 }

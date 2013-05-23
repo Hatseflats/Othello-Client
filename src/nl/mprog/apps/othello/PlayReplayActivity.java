@@ -6,22 +6,11 @@ import nl.mprog.apps.othello.game.Board;
 import nl.mprog.apps.othello.game.Cell;
 import nl.mprog.apps.othello.game.Game;
 import nl.mprog.apps.othello.game.Move;
-import nl.mprog.apps.othello.game.State;
 import nl.mprog.apps.othello.helpers.MoveHelper;
-import android.annotation.TargetApi;
-import android.app.Activity;
-import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.NavUtils;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
+import android.widget.Button;
 import android.widget.TableLayout;
-import android.widget.TableRow;
-import android.widget.TableRow.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,12 +22,8 @@ import android.widget.Toast;
  */
 public class PlayReplayActivity extends GameActivity {
 
-    private static final int GRID_SIZE = 8;
-
     private TableLayout grid;
-
     private Game game;
-
     private List<Move> moves;
 
     @Override
@@ -58,40 +43,6 @@ public class PlayReplayActivity extends GameActivity {
 
         createBoard();
         refreshBoard(game.getBoard());
-    }
-
-    /**
-     * Set up the {@link android.app.ActionBar}, if the API is available.
-     */
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    private void setupActionBar() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-            getActionBar().setDisplayHomeAsUpEnabled(true);
-        }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.play_replay, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                // This ID represents the Home or Up button. In the case of this
-                // activity, the Up button is shown. Use NavUtils to allow users
-                // to navigate up one level in the application structure. For
-                // more details, see the Navigation pattern on Android Design:
-                //
-                // http://developer.android.com/design/patterns/navigation.html#up-vs-back
-                //
-                NavUtils.navigateUpFromSameTask(this);
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
 
     public void nextMove(View view) {
@@ -117,6 +68,12 @@ public class PlayReplayActivity extends GameActivity {
                 changeCellImage(cell.getX(), cell.getY(), cell.getState());
             }
         }
+
+        Button whitePieceCount = (Button) findViewById(R.id.whitecount);
+        Button blackPieceCount = (Button) findViewById(R.id.blackcount);
+
+        whitePieceCount.setText(String.valueOf(game.getPieceCount(PLAYER_WHITE)));
+        blackPieceCount.setText(String.valueOf(game.getPieceCount(PLAYER_BLACK)));
     }
 
     @Override

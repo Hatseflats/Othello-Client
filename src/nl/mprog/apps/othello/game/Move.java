@@ -1,5 +1,13 @@
 package nl.mprog.apps.othello.game;
 
+/**
+ * De model dat een move representeerd. Zo kun je makkelijk een hele game
+ * opslaan als een lijst van moves.
+ * 
+ * @author Marten
+ * @author Sebastiaan
+ *
+ */
 public class Move {
 	
 	private final int x;

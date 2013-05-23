@@ -16,5 +16,10 @@
     <string name="game_won">Congratulations, you win!</string>
     <string name="game_lost">Too bad, you lost!</string>
     <string name="game_draw">It\'s a draw!</string>
+    <string name="hints">HINT</string>
+    <string name="aimove">AI MOVE</string>
+    <string name="yourmove">YOUR MOVE</string>
+    <string name="enemymove">ENEMY MOVE</string>
+    <string name="nextmove">NEXT MOVE</string>
 
 </resources>

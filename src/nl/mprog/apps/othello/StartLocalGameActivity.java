@@ -5,16 +5,12 @@ import java.util.List;
 import nl.mprog.apps.othello.game.Cell;
 import nl.mprog.apps.othello.game.Computer;
 import nl.mprog.apps.othello.game.Game;
-import nl.mprog.apps.othello.helpers.MoveHelper;
-import nl.mprog.apps.othello.persistence.ReplaysHandler;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
 
 /**
  * De activity voor een lokale game tegen de computer (AI).
@@ -32,12 +28,11 @@ public class StartLocalGameActivity extends GameActivity {
 
 	private Game game;
 	private Computer computer;
-	private GameEndDialog dialog;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_start_game);
+		setContentView(R.layout.activity_play_local);
 		
 		grid = (TableLayout) findViewById(R.id.table);
 		game = new Game();
@@ -93,28 +88,5 @@ public class StartLocalGameActivity extends GameActivity {
 				toggleClickable(true);
 			}
 		}
-	}
-
-    /**
-     * Shows all available moves on the board
-     * @param view
-     */
-	
-	public void showHints(View view) {
-		if (game.getCurrentPlayer() != PLAYER_WHITE) {
-			return;
-		}
-		
-		List<Cell> availableMoves = game.getBoard().getAvailableMoves(game.getCurrentPlayer());
-		for (Cell cell : availableMoves) {
-			showHint(cell.getX(), cell.getY());
-		}
-	}
-	
-	private void showHint(int x, int y) {
-	    TableRow row = (TableRow) grid.getChildAt(y);
-	    ImageView cell = (ImageView) row.getChildAt(x);
-	    
-	    cell.setImageResource(R.drawable.hint_white);
 	}
 }

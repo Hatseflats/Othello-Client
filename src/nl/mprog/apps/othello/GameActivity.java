@@ -1,5 +1,7 @@
 package nl.mprog.apps.othello;
 
+import java.util.List;
+
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -49,17 +51,17 @@ public abstract class GameActivity extends Activity {
             }
         }
 
-        TextView whitePieceCount = (TextView) findViewById(R.id.whitepieces);
-        TextView blackPieceCount = (TextView) findViewById(R.id.blackpieces);
-        TextView turn = (TextView) findViewById(R.id.turn);
+        Button whitePieceCount = (Button) findViewById(R.id.whitecount);
+        Button blackPieceCount = (Button) findViewById(R.id.blackcount);
+        Button turn = (Button) findViewById(R.id.makecomputermove);
 
         whitePieceCount.setText(String.valueOf(game.getPieceCount(PLAYER_WHITE)));
         blackPieceCount.setText(String.valueOf(game.getPieceCount(PLAYER_BLACK)));
 
         if(game.getCurrentPlayer() == PLAYER_WHITE){
-            turn.setText(R.string.turn_player_white);
+            turn.setText(R.string.yourmove);
         } else {
-            turn.setText(R.string.turn_player_black);
+            turn.setText(R.string.aimove);
         }
     }
 
@@ -160,5 +162,28 @@ public abstract class GameActivity extends Activity {
         dialog = new GameEndDialog(this, gameCode);
         dialog.show();
     }
+
+    /**
+     * Shows all available moves on the board
+     * @param view
+     */
+	
+	public void showHints(View view) {
+		if (game.getCurrentPlayer() != PLAYER_WHITE) {
+			return;
+		}
+		
+		List<Cell> availableMoves = game.getBoard().getAvailableMoves(game.getCurrentPlayer());
+		for (Cell cell : availableMoves) {
+			showHint(cell.getX(), cell.getY());
+		}
+	}
+	
+	protected void showHint(int x, int y) {
+	    TableRow row = (TableRow) grid.getChildAt(y);
+	    ImageView cell = (ImageView) row.getChildAt(x);
+	    
+	    cell.setImageResource(R.drawable.hint_white);
+	}
 
 }
