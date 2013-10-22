@@ -2,6 +2,8 @@
 
 Een android app waarmee je het bordspel Othello kan spelen.
 
+Gemaakt voor de UvA minor programmeren.
+
 # Features
 
 * Othello spelen tegen de computer
